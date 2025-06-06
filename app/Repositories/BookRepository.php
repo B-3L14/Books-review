@@ -30,12 +30,12 @@ class BookRepository{
 
     public function getWithAllInfo()
     {
-        $books  = Book::with('author', 'genre', 'review')->get();
+        $books  = Book::with('author', 'gender', 'review')->get();
         return $books;
 
     }
 
-    public function findReviews(int $id)
+    public function findReview(int $id)
     {
         $book = $this->details($id);
         $review = $book->review;

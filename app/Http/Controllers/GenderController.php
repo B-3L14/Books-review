@@ -7,6 +7,7 @@ use App\Services\GenderService;
 use App\Http\Requests\GenderStoreRequest;
 use App\Http\Requests\GenderUpdateRequest;
 use App\Http\Resources\GenderResource;
+use App\Http\Resources\BookResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class GenderController extends Controller
@@ -59,20 +60,20 @@ class GenderController extends Controller
         return new GenderResource($gender);
     }
 
-    public function getWithAllInfo()
+    public function getWithBook()
     {
-        $genders = $this->genderService->getWithAllInfo();
+        $genders = $this->genderService->getWithBook();
         return GenderResource::collection($genders);
 
     }
 
-    public function findReview(int $id)
+    public function findBooks(int $id)
     {
         try{
-            $review = $this->genderService->findReview($id);
+            $book = $this->genderService->findBooks($id);
         }catch(ModelNotFoundException $e){
             return response()->json(['error'=>'Gender not found'],404);
         }
-        return new GenderResource($review);
+        return BookResource::collection($book);
     }
 }

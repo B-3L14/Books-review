@@ -12,7 +12,7 @@ class Book extends Model
     public function review()  {
         return $this->hasMany(
             Review::class,
-            'review_id',
+            'book_id',
             'id'
         );
     }
@@ -20,7 +20,7 @@ class Book extends Model
     public function gender(){
         return $this->belongsTo(
             Gender::class,
-            'gender_id',
+            'book_id',
             'id'
         );
     }
@@ -28,7 +28,7 @@ class Book extends Model
     public function author(){
         return $this->belongsTo(
             Author::class,
-            'author_id',
+            'book_id',
             'id'
         );
     }

@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-// use App\Http\Resources\AuthorResource;
-// use App\Http\Resources\GenderResource;
-// use App\Http\Resources\ReviewResource;
+use App\Http\Resources\AuthorResource;
+use App\Http\Resources\GenderResource;
+use App\Http\Resources\ReviewResource;
 
 class BookResource extends JsonResource
 {
@@ -21,9 +21,11 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'synopsis' => $this->synopsis,
-            // 'gender' => new GenderResource($this->whenLoaded('gender')),
-            // 'author' => new AuthorResource($this->whenLoaded('author')),
-            // 'review' => ReviewResource::collection($this->whenLoaded('review')),
+            'gender_id' => $this->gender_id,
+            'author_id' => $this->author_id,
+            'gender' => new GenderResource($this->whenLoaded('gender')),
+            'author' => new AuthorResource($this->whenLoaded('author')),
+            'review' => ReviewResource::collection($this->whenLoaded('review')),
         ];
     }
 }

@@ -12,7 +12,7 @@ class User extends Model
     public function review()  {
         return $this->hasMany(
             Review::class,
-            'review_id',
+            'user_id',
             'id'
         );
     }

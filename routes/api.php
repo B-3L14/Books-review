@@ -13,38 +13,42 @@ use App\Http\Controllers\UserController;
 
 Route::controller(AuthorController::class)->group(function () {
     Route::get('/authors', 'get');
+    Route::get('/authors/books/{id}', 'findBooks');
+    Route::get('/authors/books', 'getWithBook');
     Route::get('/authors/{id}', 'details');
     Route::post('/authors', 'store');
     Route::patch('/authors/{id}', 'update');
     Route::delete('/authors/{id}', 'delete');
 
-    Route::get('/authors/books/{id}', 'findBooks');
-    Route::get('/authors/books', 'getWithBook');
+    
     
 });
 
 
 Route::controller(BookController::class)->group(function () {
     Route::get('/books', 'get');
+    Route::get('/books/reviews/{id}', 'findReview'); 
+    Route::get('/books/info', 'getWithAllInfo'); //deu ruim
     Route::get('/books/{id}', 'details');
     Route::post('/books', 'store');
     Route::patch('/books/{id}', 'update');
     Route::delete('/books/{id}', 'delete');
 
-    Route::get('/books/reviews/{id}', 'findReview'); 
-    Route::get('/books/info', 'getWithAllInfo'); 
+    
 });
 
 
 Route::controller(GenderController::class)->group(function () {
     Route::get('/genders', 'get');
+    Route::get('/genders/books', 'getWithBook');
+    Route::get('/genders/books/{id}', 'findBooks');
     Route::get('/genders/{id}', 'details');
     Route::post('/genders', 'store');
     Route::patch('/genders/{id}', 'update');
     Route::delete('/genders/{id}', 'delete');
 
-    Route::get('/genders/books/{id}', 'findBooks');
-    Route::get('/genders/books', 'getWithBook');
+    
+    
 });
 
 
@@ -59,6 +63,7 @@ Route::controller(ReviewController::class)->group(function () {
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/users', 'get');
+    Route::get('/users/reviews/{id}', 'findReviews');
     Route::get('/users/{id}', 'details');
     Route::post('/users', 'store');
     Route::patch('/users/{id}', 'update');

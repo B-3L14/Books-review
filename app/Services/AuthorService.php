@@ -2,11 +2,15 @@
 
 namespace App\Services;
 use App\Repositories\AuthorRepository;
+use App\Services\BookService;
 
 class AuthorService{
     private AuthorRepository $authorRepository;
-    public function __construct(AuthorRepository $authorRepository){
+    private BookService $bookService;
+
+    public function __construct(AuthorRepository $authorRepository, BookService $bookService){
         $this->authorRepository = $authorRepository;
+        $this->bookService = $bookService;
     }
 
     public function get(){
@@ -27,6 +31,13 @@ class AuthorService{
     }
 
     public function delete(int $id){
+        $author = $this->details($id);
+        $books = $author->book;
+
+        foreach($books as $book){
+            $this->bookService->delete($book->id);
+        }
+
         return $this->authorRepository->delete($id);
     }
 

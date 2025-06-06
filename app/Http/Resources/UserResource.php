@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\BookResource;
+use App\Http\Resources\ReviewResource;
 
-class GenderResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +18,8 @@ class GenderResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'book' => BookResource::collection($this->whenLoaded('book')),
+            'email' => $this->email,
+            'review' => ReviewResource::collection($this->whenLoaded('review')),
         ];
     }
 }

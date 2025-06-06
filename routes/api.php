@@ -17,6 +17,10 @@ Route::controller(AuthorController::class)->group(function () {
     Route::post('/authors', 'store');
     Route::patch('/authors/{id}', 'update');
     Route::delete('/authors/{id}', 'delete');
+
+    Route::get('/authors/books/{id}', 'findBooks');
+    Route::get('/authors/books', 'getWithBook');
+    
 });
 
 
@@ -27,8 +31,8 @@ Route::controller(BookController::class)->group(function () {
     Route::patch('/books/{id}', 'update');
     Route::delete('/books/{id}', 'delete');
 
-    Route::get('/books/reviews/{id}', 'findReview'); //ainda n feita
-    Route::get('/books/info', 'getWithAllInfo'); //ainda n feita
+    Route::get('/books/reviews/{id}', 'findReview'); 
+    Route::get('/books/info', 'getWithAllInfo'); 
 });
 
 
@@ -38,6 +42,9 @@ Route::controller(GenderController::class)->group(function () {
     Route::post('/genders', 'store');
     Route::patch('/genders/{id}', 'update');
     Route::delete('/genders/{id}', 'delete');
+
+    Route::get('/genders/books/{id}', 'findBooks');
+    Route::get('/genders/books', 'getWithBook');
 });
 
 

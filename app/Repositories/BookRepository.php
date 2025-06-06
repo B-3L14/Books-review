@@ -27,4 +27,18 @@ class BookRepository{
         $book->delete();
         return $book;
     }
+
+    public function getWithAllInfo()
+    {
+        $books  = Book::with('author', 'genre', 'review')->get();
+        return $books;
+
+    }
+
+    public function findReviews(int $id)
+    {
+        $book = $this->details($id);
+        $review = $book->review;
+        return $review;
+    }
 }

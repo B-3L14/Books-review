@@ -29,4 +29,14 @@ class BookService{
     public function delete(int $id){
         return $this->bookRepository->delete($id);
     }
+
+    public function getWithAllInfo()
+    {
+        return $this->bookRepository->getWithAllInfo();
+    }
+
+    public function findReview(int $id)
+    {
+        return $this->bookRepository->findReview($id);
+    }
 }

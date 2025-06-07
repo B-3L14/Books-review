@@ -20,7 +20,7 @@ class Book extends Model
     public function gender(){
         return $this->belongsTo(
             Gender::class,
-            'book_id',
+            'gender_id',
             'id'
         );
     }
@@ -28,7 +28,7 @@ class Book extends Model
     public function author(){
         return $this->belongsTo(
             Author::class,
-            'book_id',
+            'author_id',
             'id'
         );
     }
